@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +36,7 @@ namespace LINQProductReview
             products.Add(new ProductReview() { productId = 19, userId = 8, review = "Average", rating = 3, isLike = true });
             products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 2, isLike = false });
             products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 3, isLike = true });
-            Console.WriteLine("Product reviews added");          
+            Console.WriteLine("Product reviews added\n");          
            
         }
         public static void IterateThroughList(List<ProductReview> products)
@@ -90,6 +91,34 @@ namespace LINQProductReview
             Console.WriteLine("\n----------Skip Top Five records in list-----------");
             var res = (from product in products orderby product.rating descending select product).Skip(5).ToList();
             IterateThroughList(res);
+        }
+
+        // Data Table
+
+        public static void CreateDataTable(List<ProductReview> products)
+        {
+            AddProductReview(products);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("productId");
+            dt.Columns.Add("userId");
+            dt.Columns.Add("rating");
+            dt.Columns.Add("review");
+            dt.Columns.Add("isLike", typeof(bool));
+
+            foreach (var data in products)
+            {
+                dt.Rows.Add(data.productId, data.userId, data.rating, data.review, data.isLike);
+            }
+            IterateTable(dt);
+        }
+       
+        public static void IterateTable(DataTable table)
+        {
+            Console.WriteLine("ProductId UserId Review Rating IsLike:");
+            foreach (DataRow p in table.Rows)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
+            }
         }
     }
 }
