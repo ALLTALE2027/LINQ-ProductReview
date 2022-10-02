@@ -7,6 +7,7 @@
             Console.WriteLine("Prodcut Review Management");
             Console.WriteLine("Enter a Option");
             Console.WriteLine("1.Add Values to list");
+            Console.WriteLine("2.Retrieve Top 3 Records");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -14,6 +15,9 @@
             {
                 case 1:
                     ProductReviewLINQ.AddProductReview(productReviews);
+                    break;
+                case 2:
+                    ProductReviewLINQ.RetrieveTopThreeRating(productReviews);
                     break;
                 default:
                     Console.WriteLine("Enter correct choice");
