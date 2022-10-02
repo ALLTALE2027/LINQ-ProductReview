@@ -10,6 +10,7 @@
             Console.WriteLine("2.Retrieve Top 3 Records");
             Console.WriteLine("3.Retrieve Records Based On Rating and Product Id's");
             Console.WriteLine("4.Retrive the count records by productId");
+            Console.WriteLine("5.Retrieving the product id and review in list");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -26,6 +27,9 @@
                     break;
                 case 4:
                     ProductReviewLINQ.CountingRecordsByProductId(productReviews);
+                    break;
+                case 5:
+                    ProductReviewLINQ.RetrieveOnlyProductIdAndReviews(productReviews);
                     break;
                 default:
                     Console.WriteLine("Enter correct choice");

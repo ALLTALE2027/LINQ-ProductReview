@@ -73,5 +73,15 @@ namespace LINQProductReview
                 Console.WriteLine("ProductId: " + e.ProductId +  "  Count: " +  e.count);
             }
         }
+        public static void RetrieveOnlyProductIdAndReviews(List<ProductReview> products)
+        {
+            string result = null;
+            AddProductReview(products);
+            var res = products.Select(product => new { ProductId = product.productId, Review = product.review }).ToList();
+            foreach (var e in res)
+            {
+                Console.WriteLine("ProductId " + e.ProductId + " " + "Review " + " " + e.Review);
+            }
+        }
     }
 }
