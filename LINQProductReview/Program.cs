@@ -14,6 +14,7 @@
             Console.WriteLine("6.Skip Top five records");
             Console.WriteLine("7.Create DataTable");
             Console.WriteLine("8.Retrieve the records whose column islike has true using (DataTable)");
+            Console.WriteLine("9.Finding the average rating value");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -41,6 +42,9 @@
                     break;
                 case 8:
                     ProductReviewLINQ.ReturnsOnlyIfIsLikeFieldAsTrue();
+                    break;
+                case 9:
+                    ProductReviewLINQ.AverageOfRating();
                     break;
 
                 default:

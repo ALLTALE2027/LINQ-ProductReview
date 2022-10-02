@@ -109,7 +109,7 @@ namespace LINQProductReview
             {
                 dt.Rows.Add(data.productId, data.userId, data.rating, data.review, data.isLike);
             }
-            IterateTable(dt);
+            //IterateTable(dt);
 
             return dt;
         }
@@ -133,6 +133,14 @@ namespace LINQProductReview
             {
                 Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
             }
+        }
+        public static void AverageOfRating()
+        {
+            List<ProductReview> products = new List<ProductReview>();
+            DataTable table = CreateDataTable(products);
+            double result = (double) table.Select().Where(p => p["rating"] != DBNull.Value).Select(c => Convert.ToDecimal(c["rating"])).Average();
+            Console.WriteLine("Average of ratings is: " + result);
+           
         }
     }
 }
