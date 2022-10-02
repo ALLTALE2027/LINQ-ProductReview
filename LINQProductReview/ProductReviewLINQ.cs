@@ -83,5 +83,13 @@ namespace LINQProductReview
                 Console.WriteLine("ProductId " + e.ProductId + " " + "Review " + " " + e.Review);
             }
         }
+
+        public static void SkipTopFiveRecords(List<ProductReview> products)
+        {
+            AddProductReview(products);
+            Console.WriteLine("\n----------Skip Top Five records in list-----------");
+            var res = (from product in products orderby product.rating descending select product).Skip(5).ToList();
+            IterateThroughList(res);
+        }
     }
 }

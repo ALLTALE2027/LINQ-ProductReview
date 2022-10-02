@@ -11,6 +11,7 @@
             Console.WriteLine("3.Retrieve Records Based On Rating and Product Id's");
             Console.WriteLine("4.Retrive the count records by productId");
             Console.WriteLine("5.Retrieving the product id and review in list");
+            Console.WriteLine("6.Skip Top five records");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -31,10 +32,16 @@
                 case 5:
                     ProductReviewLINQ.RetrieveOnlyProductIdAndReviews(productReviews);
                     break;
+                case 6:
+                    ProductReviewLINQ.SkipTopFiveRecords(productReviews);
+                    break;
+
                 default:
                     Console.WriteLine("Enter correct choice");
                     break;
 
-            }   }
+            
+            }   
+        }
     }
 }
