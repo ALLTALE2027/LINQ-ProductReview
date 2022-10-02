@@ -15,6 +15,7 @@
             Console.WriteLine("7.Create DataTable");
             Console.WriteLine("8.Retrieve the records whose column islike has true using (DataTable)");
             Console.WriteLine("9.Finding the average rating value");
+            Console.WriteLine("10.Retrieve all records with message 'good' in ProductReview");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -45,6 +46,9 @@
                     break;
                 case 9:
                     ProductReviewLINQ.AverageOfRating();
+                    break;
+                case 10:
+                    ProductReviewLINQ.ReturnsReviewMessageContainingGood();
                     break;
 
                 default:

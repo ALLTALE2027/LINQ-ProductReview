@@ -142,5 +142,18 @@ namespace LINQProductReview
             Console.WriteLine("Average of ratings is: " + result);
            
         }
+
+        public static void ReturnsReviewMessageContainingGood()
+        {
+            List<ProductReview> products = new List<ProductReview>();
+            DataTable table = CreateDataTable(products);
+            var res = from t in table.AsEnumerable() where t.Field<string>("review") == "Good" select t;
+            Console.WriteLine("ProductId UserId Review Rating IsLike:\n");
+            foreach (var p in res)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
+            }
+        }
+
     }
 }
