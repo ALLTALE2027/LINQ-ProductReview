@@ -8,6 +8,7 @@
             Console.WriteLine("Enter a Option");
             Console.WriteLine("1.Add Values to list");
             Console.WriteLine("2.Retrieve Top 3 Records");
+            Console.WriteLine("3.Retrieve Records Based On Rating and Product Id's");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -18,6 +19,9 @@
                     break;
                 case 2:
                     ProductReviewLINQ.RetrieveTopThreeRating(productReviews);
+                    break;
+                case 3:
+                    ProductReviewLINQ.RetrieveRecordsBasedOnRatingAndProductId(productReviews);
                     break;
                 default:
                     Console.WriteLine("Enter correct choice");

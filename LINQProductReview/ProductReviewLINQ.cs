@@ -54,5 +54,13 @@ namespace LINQProductReview
             IterateThroughList(res);
            
         }
+
+        public static void RetrieveRecordsBasedOnRatingAndProductId(List<ProductReview> products)
+        {
+            AddProductReview(products);
+            Console.WriteLine("\n-----------Retrieve Records Based On Rating and Product Id's-----------");
+            var res = (from product in products where product.rating > 3 && (product.productId == 1 || product.productId == 4 || product.productId == 9) select product).ToList();
+            IterateThroughList(res);
+        }
     }
 }
