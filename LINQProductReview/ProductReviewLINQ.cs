@@ -62,5 +62,16 @@ namespace LINQProductReview
             var res = (from product in products where product.rating > 3 && (product.productId == 1 || product.productId == 4 || product.productId == 9) select product).ToList();
             IterateThroughList(res);
         }
+
+        public static void CountingRecordsByProductId(List<ProductReview> products)
+        {
+            string res = null;
+            AddProductReview(products);
+            var data = products.GroupBy(x => x.productId).Select(a => new { ProductId = a.Key, count = a.Count()});
+            foreach (var e in data)
+            {
+                Console.WriteLine("ProductId: " + e.ProductId +  "  Count: " +  e.count);
+            }
+        }
     }
 }
