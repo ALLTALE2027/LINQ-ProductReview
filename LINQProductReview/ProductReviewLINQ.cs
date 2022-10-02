@@ -95,7 +95,7 @@ namespace LINQProductReview
 
         // Data Table
 
-        public static void CreateDataTable(List<ProductReview> products)
+        public static DataTable CreateDataTable(List<ProductReview> products)
         {
             AddProductReview(products);
             DataTable dt = new DataTable();
@@ -110,12 +110,26 @@ namespace LINQProductReview
                 dt.Rows.Add(data.productId, data.userId, data.rating, data.review, data.isLike);
             }
             IterateTable(dt);
+
+            return dt;
         }
        
         public static void IterateTable(DataTable table)
         {
-            Console.WriteLine("ProductId UserId Review Rating IsLike:");
+            Console.WriteLine("ProductId UserId Review Rating IsLike:\n");
             foreach (DataRow p in table.Rows)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
+            }
+        }
+
+        public static void ReturnsOnlyIfIsLikeFieldAsTrue()
+        {
+            List<ProductReview> products = new List<ProductReview>();
+            DataTable table = CreateDataTable(products);
+            var res = from t in table.AsEnumerable() where t.Field<bool>("isLike") == true select t;
+            Console.WriteLine("ProductId UserId Review Rating IsLike:\n");
+            foreach (var p in res)
             {
                 Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
             }

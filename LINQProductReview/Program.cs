@@ -13,6 +13,7 @@
             Console.WriteLine("5.Retrieving the product id and review in list");
             Console.WriteLine("6.Skip Top five records");
             Console.WriteLine("7.Create DataTable");
+            Console.WriteLine("8.Retrieve the records whose column islike has true using (DataTable)");
             int option = Convert.ToInt32(Console.ReadLine());
         
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -37,6 +38,9 @@
                     ProductReviewLINQ.SkipTopFiveRecords(productReviews);
                     break;
                 case 7:ProductReviewLINQ.CreateDataTable(productReviews);
+                    break;
+                case 8:
+                    ProductReviewLINQ.ReturnsOnlyIfIsLikeFieldAsTrue();
                     break;
 
                 default:
